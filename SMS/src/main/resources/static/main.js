@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function editStudent(studentId) {
     // Retrieve student data from the form
     const studentData = {
-        id: studentId, // Assuming you're passing the student ID into this function
+        id: studentId,
         firstName: document.getElementById('firstName').value,
         lastName: document.getElementById('lastName').value,
         phone: document.getElementById('phone').value,
@@ -89,7 +89,6 @@ function editStudent(studentId) {
     .then(updatedStudent => {
         // Update the student in the grid
         console.log('Student updated:', updatedStudent);
-        // You'll need to write a function to update the row in the grid
     })
     .catch(error => {
         console.error('Error:', error);
