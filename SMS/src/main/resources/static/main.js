@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(student => {
             addStudentToGrid(student);
-            form.reset(); // Reset the form after successful submission
+            form.reset();
         })
         .catch(error => {
             console.error('Error:', error);
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function addStudentToGrid(student) {
     const tableBody = document.getElementById('students-grid').getElementsByTagName('tbody')[0];
     const newRow = tableBody.insertRow();
-    newRow.setAttribute('data-student-id', student.id); // Add this line here
+    newRow.setAttribute('data-student-id', student.id);
 
     newRow.innerHTML = `
         <td>${student.firstName}</td>
@@ -60,9 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 
     
-    // Function to edit a student's information
 function editStudent(studentId) {
-    // Retrieve student data from the form
     const studentData = {
         id: studentId,
         firstName: document.getElementById('firstName').value,
@@ -87,7 +85,6 @@ function editStudent(studentId) {
         return response.json();
     })
     .then(updatedStudent => {
-        // Update the student in the grid
         console.log('Student updated:', updatedStudent);
     })
     .catch(error => {
@@ -96,7 +93,6 @@ function editStudent(studentId) {
     });
 }
 
-// Function to delete a student
 function deleteStudent(studentId) {
     fetch(`api/students/${studentId}`, {
         method: 'DELETE',
@@ -105,7 +101,6 @@ function deleteStudent(studentId) {
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-        // Remove the student from the grid
         const row = document.querySelector(`tr[data-student-id="${studentId}"]`);
         if (row) {
             row.remove();
