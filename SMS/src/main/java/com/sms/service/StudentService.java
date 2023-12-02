@@ -8,32 +8,30 @@ import org.springframework.transaction.annotation.Transactional;
 import com.sms.model.Student;
 import com.sms.repository.StudentRepository;
 
+
 @Service
 @Transactional
 public class StudentService {
-    private final StudentRepository repository;
 
-    public StudentService(StudentRepository repository) {
-        this.repository = repository;
+    private final StudentRepository studentRepository;
+
+    public StudentService(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
     }
 
-    public Student addStudent(Student student) {
-        return repository.save(student);
+    public Student saveOrUpdateStudent(Student student) {
+        return studentRepository.save(student);
     }
 
     public List<Student> getAllStudents() {
-        return repository.findAll();
+        return studentRepository.findAll();
     }
 
     public Student getStudentById(Long id) {
-        return repository.findById(id).orElse(null);
-    }
-
-    public Student updateStudent(Student student) {
-        return repository.save(student);
+        return studentRepository.findById(id).orElse(null);
     }
 
     public void deleteStudent(Long id) {
-        repository.deleteById(id);
+        studentRepository.deleteById(id);
     }
 }

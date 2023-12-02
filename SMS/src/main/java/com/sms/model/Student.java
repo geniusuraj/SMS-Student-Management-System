@@ -3,32 +3,38 @@ package com.sms.model;
 	
 import java.util.Date;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.persistence.*;
+
 
 @Entity
 public class Student {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String firstName;
     private String lastName;
-    private String studentId;
-    private String major;
+    private String phone;
+    
     @Temporal(TemporalType.DATE)
-    private Date enrollmentDate;
-	public Student(Long id, String firstName, String lastName, String studentId, String major, Date enrollmentDate) {
+    private Date dob;
+    
+    private String gender;
+    private String address;
+	public Student() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Student(Long id, String firstName, String lastName, String phone, Date dob, String gender, String address) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.studentId = studentId;
-		this.major = major;
-		this.enrollmentDate = enrollmentDate;
+		this.phone = phone;
+		this.dob = dob;
+		this.gender = gender;
+		this.address = address;
 	}
 	public Long getId() {
 		return id;
@@ -48,24 +54,30 @@ public class Student {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public String getStudentId() {
-		return studentId;
+	public String getPhone() {
+		return phone;
 	}
-	public void setStudentId(String studentId) {
-		this.studentId = studentId;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
-	public String getMajor() {
-		return major;
+	public Date getDob() {
+		return dob;
 	}
-	public void setMajor(String major) {
-		this.major = major;
+	public void setDob(Date dob) {
+		this.dob = dob;
 	}
-	public Date getEnrollmentDate() {
-		return enrollmentDate;
+	public String getGender() {
+		return gender;
 	}
-	public void setEnrollmentDate(Date enrollmentDate) {
-		this.enrollmentDate = enrollmentDate;
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
-
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+    
     
 }
